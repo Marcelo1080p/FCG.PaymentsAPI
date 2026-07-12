@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paymentsapi
+  labels:
+    app: paymentsapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: paymentsapi
+  template:
+    metadata:
+      labels:
+        app: paymentsapi
+    spec:
+      containers:
+        - name: paymentsapi
+          image: fcg-paymentsapi:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: paymentsapi-config
+            - secretRef:
+                name: paymentsapi-secret
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
