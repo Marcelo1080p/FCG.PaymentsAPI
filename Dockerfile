@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0-jammy AS build
 WORKDIR /src
 
 COPY src/FCG.PaymentsAPI.Domain/FCG.PaymentsAPI.Domain.csproj src/FCG.PaymentsAPI.Domain/
