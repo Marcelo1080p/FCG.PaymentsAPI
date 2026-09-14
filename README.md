@@ -37,6 +37,11 @@ src/
 
 O processamento é idempotente: pedidos já processados são ignorados (índice único por `OrderId`).
 
+
+## Papel na arquitetura serverless
+
+Este serviço publica o `PaymentProcessedEvent`, consumido pela função serverless [FCG.NotificationsFunction](https://github.com/Marcelo1080p/FCG.NotificationsFunction), que substituiu o antigo microsserviço de notificações.
+
 ## Variáveis de ambiente
 
 | Variável | Descrição | Exemplo |
